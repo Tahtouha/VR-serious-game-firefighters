@@ -3378,6 +3378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   follower: {fileID: 260684916}
+  behindyou: 1
 --- !u!1001 &1656470825
 PrefabInstance:
   m_ObjectHideFlags: 0
