@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public GameObject object;
+    public GameObject follower;
 
     private GameObject[] player;
     // Start is called before the first frame update
@@ -17,7 +17,6 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         fixerJoueur();
-        //object.transform.foward
     }
 
     Vector3 getPlayerDirection()
@@ -25,13 +24,13 @@ public class FollowPlayer : MonoBehaviour
         if (player.Length < 2)
         {
             Vector3 _player_pose = player[0].transform.position;
-            Vector3 _object_pose = object.transform.position;
-            Vector3 _direction = _object_pose - _player_pose;
+            Vector3 _follower_pose =  follower.transform.position;
+            Vector3 _direction = _follower_pose - _player_pose;
             return _direction;
         }
         else
         {
-            return null;
+            return new Vector3();
         }
     }
 
@@ -40,7 +39,9 @@ public class FollowPlayer : MonoBehaviour
         Vector3 _direction = getPlayerDirection();
         if (_direction != null)
         {
-            object.transform.rotation = _direction;
+            follower.transform.rotation = Quaternion.LookRotation(_direction);
+            follower.transform.Rotate(0,90,0);
+
         }
     }
 }
